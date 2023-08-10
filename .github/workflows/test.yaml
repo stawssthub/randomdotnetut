@@ -22,13 +22,13 @@ jobs:
       run: dotnet build --configuration Release
 
     - name: Test
-      run: dotnet test --logger "trx;LogFileName=test-results.trx" || true
+      run: dotnet test -l:trx
     - name: Test Report
       uses: dorny/test-reporter@v1
       if: always()
       with:
         name: DotNET Tests
-        path: "**/test-results.trx"                            
+        path: "**/*.trx"                            
         reporter: dotnet-trx
         fail-on-error: true
         
