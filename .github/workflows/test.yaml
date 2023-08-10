@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
   
 permissions:
-  contents: 'read'
-  id-token: 'write'
-  issues: 'write'
+  actions: read
+  contents: read
+  security-events: write
 
 jobs:
   build:
