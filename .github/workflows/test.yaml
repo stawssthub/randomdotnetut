@@ -3,6 +3,11 @@ name: .NET Core
 on:
   push:
   workflow_dispatch:
+  
+permissions:
+  contents: 'read'
+  id-token: 'write'
+  issues: 'write'
 
 jobs:
   build:
