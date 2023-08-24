@@ -27,15 +27,12 @@ jobs:
       run: dotnet build --configuration Release
 
     - name: Test
-      run: dotnet test -l:trx
-    - name: Test Report
-      uses: dorny/test-reporter@v1
+      run: dotnet test ./RandomQuotes.Tests/RandomQuotes.Tests.csproj --no-build --verbosity normal --logger "trx;LogFileName=xtests.trx
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
       with:
-        name: DotNET Tests
-        path: "**/*.trx"                            
-        reporter: dotnet-trx
-        fail-on-error: true
+        trx_files: "*/test_results/xtests.trx"
         
     - name: Publish
       run: dotnet publish --configuration Release --no-build --output './publish'
