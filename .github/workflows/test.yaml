@@ -27,7 +27,7 @@ jobs:
       run: dotnet build --configuration Release
 
     - name: Test
-      run: dotnet test RandomQuotes.Tests/RandomQuotes.Tests.csproj --no-build --verbosity normal --logger "trx;LogFileName=xtests.trx"
+      run: dotnet test --no-build --verbosity normal --logger "trx;LogFileName=xtests.trx"
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
